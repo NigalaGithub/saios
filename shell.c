@@ -35,6 +35,7 @@ void shell(void)
 			puts(L"hello Say hello\r\n");
 			puts(L"clear Clear screen\r\n");
 			puts(L"helps Help for commands\r\n");
+			puts(L"versn More information of SAIOS\r\n");
 		}
 		else if (!strcmp(L"versn",com)) {
 			puts(L"SAIOS VERSION:\r\n");
