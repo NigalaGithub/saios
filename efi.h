@@ -21,7 +21,10 @@ struct EFI_SYSTEM_TABLE {
         unsigned long long (*OutputString)(
             struct EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL *This,
             unsigned short *String);
-        unsigned long long _buf2[4];
+        unsigned long long _buf2[3];
+	unsigned long long (*SetAttribute)(
+	    struct EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL *This,
+	    unsigned int attr);
         unsigned long long (*ClearScreen)(
             struct EFI_SIMPLE_TEXT_OUTPUT_PROTOCOL *This);
     } * ConOut;

@@ -8,6 +8,11 @@ void putc(unsigned short c)
     ST->ConOut->OutputString(ST->ConOut, str);
 }
 
+void setattr(unsigned int attr)
+{
+	ST->ConOut->SetAttribute(ST->ConOut, attr);
+}
+
 void puts(unsigned short *s)
 {
     ST->ConOut->OutputString(ST->ConOut, s);

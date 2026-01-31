@@ -6,15 +6,16 @@
 void shell(void)
 {
 	unsigned short com[MAXCMDLEN];
-	
+	unsigned short ttclr;
+	unsigned short bgclr;	
 	unsigned short version_now[] = L"pre1";
 	unsigned short ostype_now[] = L"SAIOSPRE";
 
+	setattr(0x0F);
+
 	puts(L"Use PS/2 not USB!\r\n");
-	puts(L"For programmer: using \\r\\n not \\n!\r\n");
-	puts(L"Type \"helps\" for guide about commands.\r\n");
-	puts(L"Type \"versn\" for more information about SAIOS.\r\n");
-	puts(L"CHINA RELEASE\r\n");
+	puts(L"Type \"helps\" for guide of commands.");
+	puts(L"PRE2\r\n");
 	
 	while (TRUE) {
 		puts(L"SAIOS <");
@@ -32,10 +33,28 @@ void shell(void)
 		}
 		else if (!strcmp(L"helps",com)) {
 			puts(L"SAIOS COMMANDS LIST:\r\n");
-			puts(L"hello Say hello\r\n");
-			puts(L"clear Clear screen\r\n");
-			puts(L"helps Help for commands\r\n");
-			puts(L"versn More information of SAIOS\r\n");
+			puts(L"hello   Say hello\r\n");
+			puts(L"clear   Clear screen\r\n");
+			puts(L"helps   Help for commands\r\n");
+			puts(L"versn   More information of SAIOS\r\n");
+			puts(L"theme   Change text color and background color\r\n");
+		}
+		else if (!strcmp(L"theme",com)) {
+			puts(L"Theme type: ");
+			gets(ttclr,65535);
+			if (!strcmp(L"1",ttclr)) {
+				setattr(0x0F);
+			}
+			else if (!strcmp(L"2",ttclr)) {
+				setattr(0x1F);
+			}
+			else if (!strcmp(L"3",ttclr)) {
+				setattr(0x2F);
+			}
+			else {
+				setattr(0x0F);
+			}
+			puts(L"\r\n");
 		}
 		else if (!strcmp(L"versn",com)) {
 			puts(L"SAIOS VERSION:\r\n");

@@ -11,5 +11,6 @@ unsigned short getc(void);
 unsigned int gets(unsigned short *buf, unsigned int buf_size);
 int strcmp(const unsigned short *s1, const unsigned short *s2);
 void clrscreen(void);
+void setattr(unsigned int attr);
 
 #endif
